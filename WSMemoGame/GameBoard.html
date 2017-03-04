@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Memo Game</title>
+    <style>
+        body {
+            background-image: url(img/retina_wood.png);
+        }
+
+        #board {
+            width: 720px;
+            height: 567px;
+            margin: 200px auto;
+            position: relative;
+            box-shadow: inset 0 0 8px 3px #824519;
+            background-image: url(img/tileable_wood_texture.png);
+            border-radius: 5px;
+        }
+
+        #cards {
+            position: absolute;
+            -webkit-perspective: 700px;
+        }
+
+        #cards-canvas {
+            position: absolute;
+            background-color: transparent;
+        }
+
+        #console {
+            position: absolute;
+            height: 567px;
+            font-size: 1.3em;
+            text-shadow: 3px 3px 0 white;
+            font-weight: bold;
+            font-family: Tahoma, Verdana, Segoe, sans-serif;
+            padding-left: 20px;
+            box-sizing: border-box;
+            padding-top: 60px;
+        }
+
+        #game-info {
+            transform: rotate(-5deg);
+            margin-top: 30px;
+        }
+
+        #instructions {
+            transform: rotate(5deg);
+            margin-top: 60px;
+        }
+
+        #game-info, #instructions {
+            text-align: center;
+        }
+
+        .card-frame {
+            border: 2px solid white;
+            position: absolute;
+        }
+
+        .card-frame.disabled {
+            z-index: 1;
+        }
+
+        .card-frame.focus {
+            border-color: red;
+        }
+
+        .card {
+            width: 80px;
+            height: 100px;
+            margin: 0;
+            -webkit-transition: 0.5s;
+            -webkit-transform-style: preserve-3d;
+        }
+
+        .card.flip {
+            -webkit-transform: rotateY(-180deg);
+        }
+
+        .card-frame.disabled .card {
+            -webkit-transition: 1s;
+            opacity: 0;
+        }
+
+        .card-frame.disabled.disabled_l .card {
+            -webkit-transform: translateY(400px) rotateY(-180deg) rotateZ(-50deg) ;
+        }
+
+        .card-frame.disabled.disabled_r .card {
+            -webkit-transform: translateY(400px) rotateY(-180deg) rotateZ(50deg) ;
+        }
+
+        .card img {
+            position: absolute;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .card .front {
+            -webkit-transform: rotateY(-180deg);
+        }
+
+        #logo {
+            text-align: center;
+        }
+
+        #username-label, #rank-label, #score-label, #time-label {
+            margin-right: 10px;
+        }
+
+        #username-label {
+            color: darkblue;
+        }
+
+        #rank-label {
+            color: red;
+        }
+
+        #score-label {
+            color: green;
+        }
+
+        #time-label {
+            color: purple;
+        }
+
+        #username, #rank, #score, #remaining-time {
+            color: #1000FF;
+        }
+
+        #instructions ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .key {
+            color: darkorange;
+            margin-right: 10px;
+        }
+
+        @-webkit-keyframes wobble {
+            15% { -webkit-transform: translateX(-20%) rotate(-5deg); }
+            30% { -webkit-transform: translateX(15%) rotate(3deg); }
+            45% { -webkit-transform: translateX(-10%) rotate(-3deg); }
+            60% { -webkit-transform: translateX(5%) rotate(2deg); }
+            75% { -webkit-transform: translateX(-2%) rotate(-1deg); }
+        }
+
+        #time-wr.highlight {
+            -webkit-animation: wobble 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="board">
+        <div id="cards"></div>
+        <div id="console">
+            <div id="logo">
+                <img id="logo-img" src="img/logo.png"/>
+            </div>
+            <div id="game-info">
+                <span id="username-label">Username</span><span id="username">Someone</span><br/>
+                <span id="score-label">Score</span><span id="score">0</span>
+                <div id="time-wr">
+                    <span id="time-label">Time</span><span id="remaining-time">90s</span>
+                </div>
+            </div>
+            <div id="instructions">
+                <ul>
+                    <li><span class="key">S</span>Start</li>
+                    <li><span class="key">Enter</span>Select</li>
+                    <li><span class="key">R</span>Restart</li>
+                    <li><span class="key">C</span>Toggle cheating mode</li>
+                </ul>
+            </div>
+        </div>
+        <canvas id="cards-canvas"></canvas>
+    </div>
+	<script src="script/FlipCard.js"></script>
+</body>
+</html>
