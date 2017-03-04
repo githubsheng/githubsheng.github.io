@@ -11,7 +11,7 @@
         #board {
             width: 720px;
             height: 567px;
-            margin: 200px auto;
+            margin: 0 auto;
             position: relative;
             box-shadow: inset 0 0 8px 3px #824519;
             background-image: url(img/tileable_wood_texture.png);
@@ -153,6 +153,14 @@
     </style>
 </head>
 <body>
+    <div>
+        <ul>
+            <li>键盘按下 S 开始游戏</li>
+            <li>使用键盘 上下左右 选择牌，回车 翻盘，连续翻到两张颜色一样的牌则可以消除</li>
+            <li style="color: red;">本演示重点： 按下 C 进入作弊模式，可以使用鼠标看牌。再次按 C 退出作弊模式</li>
+            <li>不使用任何类库。536行代码（包括注释）。</li>
+        </ul>
+    </div>
     <div id="board">
         <div id="cards"></div>
         <div id="console">
