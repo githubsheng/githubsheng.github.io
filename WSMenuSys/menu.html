@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="integrated-menu-background.js"></script>
+    <script type="text/javascript" src="menu.js"></script>
+    <link rel="stylesheet" type="text/css" href="integrated-menu-system.css"/>
+    <!-- following is for highlight js -->
+    <link rel="stylesheet" href="styles/default.css">
+    <script src="highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+        code {
+            height: 350px;
+            overflow: auto;
+            width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<pre>
+    <code class="js" style="border: 1px solid darkgray;">
+    let root = {
+        nextLevel: [{
+            label: "一级目录",
+            nextLevel: [{
+                label: "二级目录1",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: [{
+                        label: "四级目录1",
+                        nextLevel: []
+                    }, {
+                        label: "四级目录2",
+                        nextLevel: []
+                    }]
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            }, {
+                label: "二级目录2",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: []
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            }, {
+                label: "二级目录3",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: []
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            }, {
+                label: "二级目录4",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: []
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            },{
+                label: "二级目录5",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: []
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            }, {
+                label: "二级目录6",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: []
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            }]
+        }, {
+            label: "B",
+            nextLevel: [{
+                label: "B1",
+                nextLevel: [{
+                    label: "B1 a",
+                    nextLevel: []
+                }, {
+                    label: "B1 b",
+                    nextLevel: []
+                }]
+            }, {
+                label: "B2",
+                nextLevel: [{
+                    label: "B2 a",
+                    nextLevel: []
+                }, {
+                    label: "B2 b",
+                    nextLevel: []
+                }]
+            }, {
+                label: "B3",
+                nextLevel: [{
+                    label: "B3 a",
+                    nextLevel: []
+                }, {
+                    label: "B3 b",
+                    nextLevel: []
+                }]
+            }, {
+                label: "B4",
+                nextLevel: [{
+                    label: "B4 a",
+                    nextLevel: []
+                }, {
+                    label: "B4 b",
+                    nextLevel: []
+                }]
+            }, {
+                label: "B5",
+                nextLevel: [{
+                    label: "B5 a",
+                    nextLevel: []
+                }, {
+                    label: "B5 b",
+                    nextLevel: []
+                }]
+            }, {
+                label: "B6",
+                nextLevel: [{
+                    label: "B6 a",
+                    nextLevel: []
+                }, {
+                    label: "B6 b",
+                    nextLevel: []
+                }]
+            }]
+        }]
+    };
+    new MenuSystem("container", root);
+    </code>
+</pre>
+<div style="text-align: center">
+    目录结构是root，容器是id为"container"的div。调用`new MenuSystem("container", root)即可创建目录。
+</div>
+<div style="text-align: center">
+    点击下层的按钮可以前进到次级目录。点击上层的任意按钮可以回退到任意一个上级目录。
+</div>
+<div style="text-align: center">
+    仅使用JQuery最基本功能（图方便，可重构移除此依赖）
+</div>
+<div id="container" style="margin: 0 auto;"></div>
+<script>
+    let root = {
+        nextLevel: [{
+            label: "一级目录",
+            nextLevel: [{
+                label: "二级目录1",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: [{
+                        label: "四级目录1",
+                        nextLevel: []
+                    }, {
+                        label: "四级目录2",
+                        nextLevel: []
+                    }]
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            }, {
+                label: "二级目录2",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: []
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            }, {
+                label: "二级目录3",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: []
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            }, {
+                label: "二级目录4",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: []
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            },{
+                label: "二级目录5",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: []
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            }, {
+                label: "二级目录6",
+                nextLevel: [{
+                    label: "三级目录1",
+                    nextLevel: []
+                }, {
+                    label: "三级目录2",
+                    nextLevel: []
+                }]
+            }]
+        }, {
+            label: "B",
+            nextLevel: [{
+                label: "B1",
+                nextLevel: [{
+                    label: "B1 a",
+                    nextLevel: []
+                }, {
+                    label: "B1 b",
+                    nextLevel: []
+                }]
+            }, {
+                label: "B2",
+                nextLevel: [{
+                    label: "B2 a",
+                    nextLevel: []
+                }, {
+                    label: "B2 b",
+                    nextLevel: []
+                }]
+            }, {
+                label: "B3",
+                nextLevel: [{
+                    label: "B3 a",
+                    nextLevel: []
+                }, {
+                    label: "B3 b",
+                    nextLevel: []
+                }]
+            }, {
+                label: "B4",
+                nextLevel: [{
+                    label: "B4 a",
+                    nextLevel: []
+                }, {
+                    label: "B4 b",
+                    nextLevel: []
+                }]
+            }, {
+                label: "B5",
+                nextLevel: [{
+                    label: "B5 a",
+                    nextLevel: []
+                }, {
+                    label: "B5 b",
+                    nextLevel: []
+                }]
+            }, {
+                label: "B6",
+                nextLevel: [{
+                    label: "B6 a",
+                    nextLevel: []
+                }, {
+                    label: "B6 b",
+                    nextLevel: []
+                }]
+            }]
+        }]
+    };
+    new MenuSystem("container", root);
+</script>
+</body>
+</html>

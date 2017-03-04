@@ -1,0 +1,146 @@
+.integrated-menu-system {
+	/*position*/
+	position: relative;
+
+	
+	/*self styles*/
+	height:90px;
+	width:1210px;
+
+	overflow: hidden;
+	
+	/*animations*/
+	-webkit-perspective: 400px;
+}
+
+/* 
+	Quick reference: alternate means the animation plays forward and then backward and so on.
+	It only works when the iteration count is 2 or bigger. In the following case, it is 'infinite'.
+*/
+.integrated-menu-system .navigation, .integrated-menu-system .command {
+	/*position*/
+	position: absolute;
+	
+	/*self styles*/
+	color: black;
+	/*plus border it will be 140 wide*/
+	width: 140px;
+	/*plus border it will be 25 high*/
+	height:25px;
+	line-height:23px;
+	text-align: center;
+    font-weight:bold;
+	opacity: 0;
+	border: 1px solid gray;
+	border-radius:3px;
+	-webkit-user-select: none;
+	
+	box-sizing: border-box;
+
+	/*animations*/
+    transition:0.5s;
+	-webkit-transform: rotateX(-180deg);
+	background: #e6e6e6;
+}
+
+
+.integrated-menu-system .navigation {
+	top:10px;
+	z-index: 2;
+}
+
+.integrated-menu-system .navigation:hover, .integrated-menu-system .command:hover {
+    cursor:pointer;
+}
+
+/* leave 10 space on the left. 500 + 10 = 510 */
+.integrated-menu-system .navigation:first-child {
+	left: 510px;
+}
+
+/* +140 total width +10 left space */
+/* 520 + 150 */
+.integrated-menu-system .navigation:nth-child(2) {
+	left: 660px;
+}
+
+/* 670 + 150 */
+.integrated-menu-system .navigation:nth-child(3) {
+	left: 810px;
+}
+
+.integrated-menu-system .navigation:nth-child(4) {
+	left: 960px;
+}
+
+.integrated-menu-system .navigation:nth-child(5) {
+	left: 1110px;
+}
+
+.integrated-menu-system .navigation:nth-child(6) {
+	left: 1260px;
+}
+
+.integrated-menu-system .navigation:nth-child(7) {
+	left: 1410px;
+}
+
+.integrated-menu-system .navigation:nth-child(8) {
+	left: 1560px;
+}
+
+.integrated-menu-system .navigation.fly-in {
+	-webkit-transform: translateX(-500px) rotateX(-10deg);
+	-webkit-transition: 1s;
+	opacity: 1;
+}
+
+
+.integrated-menu-system .command {
+	bottom:10px;
+	z-index: 2;
+}
+
+.integrated-menu-system .command:last-child {
+	right: 1560px;
+}
+
+.integrated-menu-system .command:nth-last-child(2) {
+	right: 1410px;
+}
+
+.integrated-menu-system .command:nth-last-child(3) {
+	right: 1260px;
+}
+
+.integrated-menu-system .command:nth-last-child(4) {
+	right: 1110px;
+}
+
+.integrated-menu-system .command:nth-last-child(5) {
+	right: 960px;
+}
+
+.integrated-menu-system .command:nth-last-child(6) {
+	right: 810px;
+}
+
+.integrated-menu-system .command:nth-last-child(7) {
+	right: 660px;
+}
+
+.integrated-menu-system .command:nth-last-child(8) {
+	right: 510px;
+}
+
+.integrated-menu-system .command.fly-in {
+	-webkit-transform: translateX(500px) rotateX(10deg);
+	-webkit-transition: 1s;
+	opacity: 1;
+}
+
+.integrated-menu-system .menu-system-background{
+	/*position*/
+	position:absolute;
+	z-index: 1;
+}
