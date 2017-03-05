@@ -22,7 +22,7 @@
 	position: absolute;
 	
 	/*self styles*/
-	color: black;
+	color: white;
 	/*plus border it will be 140 wide*/
 	width: 140px;
 	/*plus border it will be 25 high*/
@@ -40,7 +40,7 @@
 	/*animations*/
     transition:0.5s;
 	-webkit-transform: rotateX(-180deg);
-	background: #e6e6e6;
+	background: rgb(16, 160, 229);
 }
 
 
