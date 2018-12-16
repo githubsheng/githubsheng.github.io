@@ -1,4 +1,7 @@
 //context
+import {Transition} from "./time";
+import {OBJDoc} from "./obj";
+
 var canvas = document.querySelector("#canvas", {stencil: true});
 
 var gl = WebGLDebugUtils.makeDebugContext(canvas.getContext("webgl"));
@@ -38,7 +41,7 @@ var ambientLightColor = vec3.fromValues(0.3, 0.3, 0.3);
 //change in each frame
 var m_modelMatrix = mat4.create();
 
-function randomizeRotation(){
+export function randomizeRotation(){
     mat4.identity(m_modelMatrix);
     mat4.rotateX(m_modelMatrix, m_modelMatrix, 1.0);
     mat4.rotateY(m_modelMatrix, m_modelMatrix, 1.0);
@@ -230,7 +233,7 @@ var g_quadSize;
 var g_quad_vertices_number;
 
 var scale = 2.5;
-function setupMysteriousObjectBuffer(dataStr){
+export function setupMysteriousObjectBuffer(dataStr){
     var loader = new OBJDoc();
     loader.parse(dataStr, scale); //scale should be 2.5
     var data = loader.getDrawingInfo();
@@ -651,7 +654,7 @@ var staticRotateAxisInModelSpace = vec3.create();
 // vec3.copy(expectedPointerDirOne, originalPointerDirOne);
 // vec3.copy(expectedPointerDirTwo, originalPointerDirTwo);
 
-function updateUniformsf(){
+export function updateUniformsf(){
     //calculate mvp matrix
     mat4.multiply(MVPMatrix, VPMatrix, m_modelMatrix);
 
@@ -769,7 +772,7 @@ var keyControl = (function(){
 
 })();
 
-var resumePlaying = (function(){
+export const resumePlaying = (function(){
     var isFirstTime = true;
 
     function p(){
@@ -788,7 +791,7 @@ var resumePlaying = (function(){
     return p;
 })();
 
-function stopPlaying(){
+export function stopPlaying(){
     mouseControl.disableControl();
     keyControl.disableControl();
 }
@@ -885,10 +888,10 @@ function init(){
     gl.clearColor(1.0, 1.0, 1.0, 1.0);
 
     //do remember to update the count in `startDrawingIfPrepared` if the following lines are modified.
-    loadShadersAndCreateProgram("shaders/mysObjVertex.glsl", "shaders/mysObjFrag.glsl", createNormalProgram, startDrawingIfPrepared);
-    loadShadersAndCreateProgram("shaders/shadowVertex.glsl", "shaders/shadowFrag.glsl", createShadowProgram, startDrawingIfPrepared);
-    loadShadersAndCreateProgram("shaders/wallVertex.glsl", "shaders/wallFrag.glsl", createWallProgram, startDrawingIfPrepared);
-    loadShadersAndCreateProgram("shaders/bgVertex.glsl", "shaders/bgFrag.glsl", createBackgroundProgram, startDrawingIfPrepared);
+    loadShadersAndCreateProgram("src/shaders/mysObjVertex.glsl", "src/shaders/mysObjFrag.glsl", createNormalProgram, startDrawingIfPrepared);
+    loadShadersAndCreateProgram("src/shaders/shadowVertex.glsl", "src/shaders/shadowFrag.glsl", createShadowProgram, startDrawingIfPrepared);
+    loadShadersAndCreateProgram("src/shaders/wallVertex.glsl", "src/shaders/wallFrag.glsl", createWallProgram, startDrawingIfPrepared);
+    loadShadersAndCreateProgram("src/shaders/bgVertex.glsl", "src/shaders/bgFrag.glsl", createBackgroundProgram, startDrawingIfPrepared);
     // loadShadersAndCreateProgram("shaders/lineVertex.glsl", "shaders/lineFrag.glsl", createLineProgram, startDrawingIfPrepared);
     loadBackgroundImage(startDrawingIfPrepared);
     loadSceneModelData(startDrawingIfPrepared);
