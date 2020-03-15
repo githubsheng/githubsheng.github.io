@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+</head>
+<body>
+<div>
+    <div class="header">
+      <div id="reset" class="button">Reset</div>
+      <div class="score-board">
+        <div id="total-point">0</div>
+      </div>
+      <div id="info" class="button">Info</div>
+    </div>
+        <div class="canvas-container">
+          <canvas id="canvas"></canvas>
+        </div>
+    <div class="footer">
+        <div class="slide-container">
+            <input id="speed-slider" type="range" min="10" max="100" value="100" class="slider">
+        </div>
+    </div>
+  <div id="notice" class="full-screen-modal hide">
+    <p>For reviewers: </p>
+    <p>Q: Why aren't we seeing super small circles?</p>
+    <p>
+      A: The original requirement states circles should have random diameters ranging from 10px to 100px. However,
+      during testing I realize 10px circle is too small and ... not fun anymore. Therefore, I keep the diameter range to be
+      30px to 100px. Occasionally the game also spawns some really small circles (20px) and hitting them gives player
+      extra bonus. Having said this, the game still works with range of 10px to 100px. You may change the range
+      inside Circle class constructor.
+    </p>
+    <p>Q: Game seems easier than I expected?</p>
+    <p>
+      A: You touch the circle, and if the touch point is within the circle, you hit the circle and get the points,
+      otherwise you miss it. For very small points, it is too easy to miss it. So I made the game to be more tolerant.
+      As long as your touch point is close enough, even though it may not be within the circle, it is still counted as
+      a hit.
+    </p>
+    <p>I also multiply the points you get by 10. The original requirement <i>"The score should be incremented by a value
+      inversely proportional to the size of the dot, with 10px dots worth 10 points, and 100px dots worth 1 point. "</i> do
+    not make sense in practice because when we convert the point to integer, both 100px circle and 51px circle will all result in 1 point</p>
+    <p>Q: I see a bunch of images rather than circles. How do these images map to circles?</p>
+    <p>A: You can click on the score board on the top, that will toggle debug mode and you can see how images are
+    mapped to circles.</p>
+    <div class="back-button-container">
+      <a id="notice-to-game" class="button">Back</a>
+    </div>
+
+  </div>
+</div>
+<script src="game_globals.js"></script>
+<script src="slider.js"></script>
+<script src="util.js"></script>
+<script src="named_images.js"></script>
+<script src="circle_types.js"></script>
+<script src="circle.js"></script>
+<script src="point_text.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
