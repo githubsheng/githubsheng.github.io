@@ -22,7 +22,7 @@ class PointText {
             return;
         }
         ctx.save();
-        ctx.font = '30px cursive';
+        ctx.font = 'bold 30px arial';
         ctx.globalAlpha = this.opacityTween.linear(time.deltaTime);
         ctx.fillStyle = this.color;
         ctx.fillText(this.text, this.xTween.easeOut(time.deltaTime), this.yTween.linear(time.deltaTime));

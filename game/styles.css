@@ -7,7 +7,6 @@ body {
     bottom: 0;
     background-color: rgb(41, 65, 103);
     color: white;
-    font-family: cursive;
     text-shadow: 1px 1px 1px black;
 }
 
@@ -109,7 +108,6 @@ body {
     right: 0;
     bottom: 0;
     background: #294167;
-    font-family: Arial;
     padding: 20px;
     overflow: scroll;
 }
