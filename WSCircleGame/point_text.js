@@ -11,7 +11,7 @@ class PointText {
         this.elapsed = 0;
         this.duration = 1;
         this.yTween = new Tween(y, 0, this.duration);
-        this.xTween = new Tween(x, _DotGameGlobal.canvasBoundingRect.width - 50, this.duration);
+        this.xTween = new Tween(x, _DotGameGlobal.canvasBoundingRect.width - 100, this.duration);
         this.opacityTween = new Tween(1, 0, this.duration);
     }
 
