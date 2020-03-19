@@ -67,10 +67,6 @@ function attachEventHandlers() {
         _DotGameGlobal.renderTotalPoints();
     });
 
-    document.getElementById("info").addEventListener("click", () => {
-        document.getElementById("notice").className = "full-screen-modal";
-    });
-
     document.getElementById("total-point").addEventListener("click", () => {
         _DotGameGlobal.isDebugMode = !_DotGameGlobal.isDebugMode;
     });
