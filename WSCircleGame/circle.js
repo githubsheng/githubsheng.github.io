@@ -63,9 +63,7 @@ class Circle {
     onClick(){
         const { scene } = _DotGameGlobal;
         scene.delete(this); //delete the circle from scene
-        setTimeout(() => {
-            scene.add(new Circle()) //generate a new circle in 1 second
-        }, 1000);
+        setTimeout(Circle.spawnNew, Math.random() * 2000);
         //adds points to player's total point
         const pointsAdded = Math.floor(500 / this.radius);
         _DotGameGlobal.totalPoints += pointsAdded;
@@ -101,6 +99,10 @@ class Circle {
      */
     getRotationDirection(){
         return Math.random() < 0.5 ? -1 : 1;
+    }
+    
+    static spawnNew(){
+        scene.add(new Circle()) //generate a new circle in 1 second
     }
 
 }
