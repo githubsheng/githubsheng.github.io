@@ -70,10 +70,6 @@ function attachEventHandlers() {
     document.getElementById("total-point").addEventListener("click", () => {
         _DotGameGlobal.isDebugMode = !_DotGameGlobal.isDebugMode;
     });
-
-    document.getElementById("notice-to-game").addEventListener("click", () => {
-        document.getElementById("notice").className = "full-screen-modal hide";
-    });
 }
 
 main();
