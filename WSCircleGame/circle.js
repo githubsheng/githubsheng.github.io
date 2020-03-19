@@ -8,7 +8,7 @@ class Circle {
 
     constructor() {
         this.type = this.getCircleType();
-        this.radius = this.type.radius || Math.floor(Math.random() * 35) + 15;
+        this.radius = this.type.radius || Math.floor(Math.random() * 20) + 15;
         this.x = this.getInitialXCoordinate();
         this.y = 0;
         this.rotateDirection = this.getRotationDirection();
