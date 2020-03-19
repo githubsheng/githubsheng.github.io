@@ -102,7 +102,7 @@ class Circle {
     }
     
     static spawnNew(){
-        scene.add(new Circle()) //generate a new circle in 1 second
+        _DotGameGlobal.scene.add(new Circle()) //generate a new circle in 1 second
     }
 
 }
